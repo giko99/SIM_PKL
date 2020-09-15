@@ -14,10 +14,10 @@ class Pkl(models.Model):
     deskripsi = models.TextField(default='')
     telp = models.CharField(max_length=255)
 
-class Kelompok(models.Model):
-    nim = models.CharField(max_length=255)
-    nama = models.CharField(max_length=255)
-    jurusan = models.CharField(max_length=255)
-    prodi = models.CharField(max_length=255)
+# class Kelompok(models.Model):
+#     nim = models.CharField(max_length=255)
+#     nama = models.CharField(max_length=255)
+#     jurusan = models.CharField(max_length=255)
+#     prodi = models.CharField(max_length=255)
 
 
