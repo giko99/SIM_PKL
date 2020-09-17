@@ -1,4 +1,6 @@
-{% include "home/index.html" %}
+{% extends "base.html" %}
+
+{% block content %}
 <div id="layoutSidenav_content">
   <main>
       <div class="container-fluid">
@@ -9,27 +11,45 @@
           <div class="row">
             <div class="col-md-10">
               <div class="card-body">
+                <form action="" method="POST" class="mt-3">
                   <div class="table-responsive">
-                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <form action="" method="POST" class="mt-3">
+                      <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
                           {% csrf_token %}
 
                           <div class="form-group">
-                            <input type="date" name="tgl_kegiatan" value="{{data.tgl_kegiatan}}" class="form-control mt-2"><br>
-                            <input type="text" name="judul" value="{{data.judul}}" class="form-control mt-2"><br>
-                            <input type="text" name="ket" value="{{data.ket}}" class="form-control mt-2"><br>
-                            <input type="file" name="upload_img" value="{{data.upload_img}}" class="form-control mt-2"><br>
-                            <input type="submit" class="btn btn-primary mt-2">
+                            <tr>
+                              <td>Tanggal Kegiatan</td>
+                              <td>:</td>
+                              <td><input type="text" name="tgl_kegiatan" value="{{data.tgl_kegiatan}}" readonly class="form-control mt-2"><br></td>    
+                            </tr>
+                            <tr>
+                              <td>Judul Kegiatan</td>
+                              <td>:</td>
+                              <td><input type="text" name="judul" value="{{data.judul}}" class="form-control mt-2"><br></td>    
+                            </tr>
+                            <tr>
+                              <td>Uraian</td>
+                              <td>:</td>
+                              <td><input type="text" name="ket" value="{{data.ket}}" class="form-control mt-2"><br></td>    
+                            </tr>
+                            <tr>
+                              <td>File Pendukung</td>
+                              <td>:</td>
+                              <td><input type="file" name="upload_img" value="{{data.upload_img}}" class="form-control mt-2"><br></td>    
+                            </tr>
                           </div>
-                        </form>
                       </table>
-                  </div>
+                      <input type="submit" class="btn btn-primary mt-2">
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
       </div>
   </main>
 </div>
+
+{% endblock %}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

@@ -10,6 +10,5 @@ urlpatterns = [
     path('new/', views.new),
     path('<id>/', views.detail),
     path('<id>/delete/', views.delete),
-    path('<id>/update/', views.update),
-
 ]
+    # path('<id>/update/', views.update),

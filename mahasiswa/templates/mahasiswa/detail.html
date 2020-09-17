@@ -1,5 +1,6 @@
-{% include "home/index.html" %}
-{% load static %}
+{% extends "base.html" %}
+
+{% block content %}
 <div id="layoutSidenav_content">
   <main>
       <div class="container-fluid">
@@ -11,24 +12,34 @@
             <div class="col-md-10">
               <div class="card-body">
                   <div class="table-responsive">
-                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <table class="table table-responsive" id="" width="100%" cellspacing="0">
                           <thead>
                               <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">Judul Proposal</th>
-                                <th scope="col">Nama Mitra</th>
-                                <th scope="col">Alamat</th>
-                                <th scope="col">Deskripsi</th>
-                                <th scope="col">Nomor Telepon</th>
-                              </tr>
-                              <tr>
-                                <td>{{data.id}}</td>
-                                <td>{{data.judul}}</td>
-                                <td>{{data.nama}}</td>
-                                <td>{{data.alamat}}</td>
-                                <td>{{data.deskripsi}}</td>
-                                <td>{{data.telp}}</td>
-                              </tr>
+                                <tr>
+                                  <td>Judul Proposal</td>
+                                  <td>:</td>
+                                  <td>{{data.judul}}</td>
+                                </tr>
+                                <tr>
+                                  <td>Nama Mitra</td>
+                                  <td>:</td>
+                                  <td>{{data.nama}}</td>
+                                </tr>
+                                <tr>
+                                  <td>Alamat</td>
+                                  <td>:</td>
+                                  <td>{{data.alamat}}</td>
+                                </tr>
+                                <tr>
+                                  <td>Deskripsi</td>
+                                  <td>:</td>
+                                  <td>{{data.deskripsi}}</td>
+                                </tr>
+                                <tr>
+                                  <td>Nomor Telepon</td>
+                                  <td>:</td>
+                                  <td>{{data.telp}}</td>
+                                </tr>
                             </thead>
                         </table>
                     </div>
@@ -38,10 +49,4 @@
         </div>
     </main>
   </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  </body>
-</html>
+{% endblock %}

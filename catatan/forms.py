@@ -5,4 +5,4 @@ from . import models
 class CatatanForm(ModelForm):
     class Meta :
         model = models.Catatan
-        exclude=[]
+        exclude=['owner']

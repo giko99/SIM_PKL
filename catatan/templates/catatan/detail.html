@@ -1,5 +1,6 @@
-{% include "home/index.html" %}
-{% load static %}
+{% extends "base.html" %}
+
+{% block content %}
 <div id="layoutSidenav_content">
   <main>
       <div class="container-fluid">
@@ -11,23 +12,29 @@
             <div class="col-md-10">
               <div class="card-body">
                   <div class="table-responsive">
-                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
                           <thead>
-                            <tr>
-                              <th scope="col">#</th>
-                              <th scope="col">Tanggal Kegiatan</th>
-                              <th scope="col">Judul Kegiatan</th>
-                              <th scope="col">Uraian/th>
-                              <th scope="col">Upload</th> 
-                            </tr>
-                            <tr>
-                              <td>{{data.id}}</td>
-                              <td>{{data.tgl_kegiatan}}</td>
-                              <td>{{data.judul}}</td>
-                              <td>{{data.ket}}</td>
-                              <td>{{data.upload_img}}</td>
-                            </tr>
-                          </thead>
+
+                          <tr>
+                            <td>Tanggal Kegiatan</td>
+                            <td>:</td>
+                            <td>{{data.tgl_kegiatan}}</td>
+                          </tr>
+                          <tr>
+                            <td>Judul Kegiatan</td>
+                            <td>:</td>
+                            <td>{{data.judul}}</td>
+                          </tr>
+                          <tr>
+                            <td>Uraian</td>
+                            <td>:</td>
+                            <td>{{data.ket}}</td>
+                          </tr>
+                          <tr>
+                            <td>File Pendukung</td>
+                            <td>:</td>
+                            <td><a href="/media/{{d.upload_img}}">File</a></td>
+                          </tr>
                         </table>
                   </div>
                 </div>
@@ -36,6 +43,8 @@
       </div>
   </main>
 </div>
+
+{% endblock %}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

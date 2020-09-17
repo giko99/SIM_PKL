@@ -1,5 +1,6 @@
-{% include "home/index.html" %}
-{% load static %}
+{% extends "base.html" %}
+
+{% block content %}
     <div id="layoutSidenav_content">
       <main>
           <div class="container-fluid">
@@ -17,6 +18,7 @@
                                 <tr>
                                   <th scope="col">#</th>
                                   <th scope="col">Tanggal Kegiatan</th>
+                                  <th scope="col">Owner</th>
                                   <th scope="col">Judul Kegiatan</th>
                                   <th scope="col">Uraian</th>
                                   <th scope="col">Upload</th>
@@ -29,6 +31,7 @@
                                 <tr>
                                   <td>{{forloop.counter}}</td>
                                   <td>{{d.tgl_kegiatan}}</td>
+                                  <td>{{d.catatan}}</td>
                                   <td>{{d.judul}}</td>
                                   <td>{{d.ket}}</td>
                                   <td>
@@ -36,7 +39,7 @@
                                   </td>
                                   <td>
                                       <a class="btn btn-sm btn-success" href="/catatan/{{d.id}}">Detail</a>
-                                      <a class="btn btn-sm btn-warning" href="/catatan/{{d.id}}/update">Update</a>
+                                      <!-- <a class="btn btn-sm btn-warning" href="/catatan/{{d.id}}/update">Update</a> -->
                                       <a class="btn btn-sm btn-danger" href="/catatan/{{d.id}}/delete">Delete</a>
                                   </td>
                                 </tr>
@@ -49,6 +52,8 @@
           </div>
       </main>
     </div>
+
+    {% endblock %}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
