@@ -1,7 +1,4 @@
-{% include "home/header.html" %}
-{% include "home/sidebar.html" %}
-{% include "home/footer.html" %}
-{% include "home/navbar.html" %}
+{% include "home/index.html" %}
 {% load static %}
     <div id="layoutSidenav_content">
       <main>
@@ -35,7 +32,7 @@
                                   <td>{{d.judul}}</td>
                                   <td>{{d.ket}}</td>
                                   <td>
-                                    <a href="/media/{{d.upload_img}}">Upload IMG</a>
+                                    <a href="/media/{{d.upload_img}}">File</a>
                                   </td>
                                   <td>
                                       <a class="btn btn-sm btn-success" href="/catatan/{{d.id}}">Detail</a>

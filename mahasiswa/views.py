@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from . import models, forms
+from mitra.models import Mitra
 
 def index(req):
 
@@ -9,19 +10,17 @@ def index(req):
     }) 
 
 def input(req):
-    form_input = forms.PklForm()
 
     if req.POST:
-        form_input = forms.PklForm(req.POST)
+        pkl = models.Pkl.objects.create(judul=req.POST['judul'], nama=req.POST['nama'], alamat=req.POST['alamat'], deskripsi=req.POST['deskripsi'], telp=req.POST['telp'])
+        return redirect('/mahasiswa')
+        # if form_input.is_valid():
+        #     form_input.save()
+        # return redirect('/')
 
-        if form_input.is_valid():
-            form_input.save()
-        return redirect('/')
-
-    pkl = models.Pkl.objects.all()
+    mitra = Mitra.objects.first()
     return render(req, 'mahasiswa/input.html', {
-        'data': pkl,
-        'form': form_input,
+        'd': mitra,
     })
 
 def detail(req, id):

@@ -1,8 +1,8 @@
-from django.forms import ModelForm
+# from django.forms import ModelForm
 
-from . import models
+# from . import models
 
-class PklForm(ModelForm):
-    class Meta:
-        model = models.Pkl
-        exclude = []
+# class PklForm(ModelForm):
+#     class Meta:
+#         model = models.Pkl
+#         fields = ['judul']

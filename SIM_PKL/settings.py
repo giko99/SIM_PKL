@@ -70,9 +70,9 @@ WSGI_APPLICATION = 'SIM_PKL.wsgi.application'
 DATABASES = {
         'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'book',
-        'USER': 'tatam',
-        'PASSWORD': 'katakanlah123',
+        'NAME': 'simpkl',
+        'USER': 'giko99',
+        'PASSWORD': 'gikoriyo382',
         'HOST': 'localhost',
         'PORT': '',
     }

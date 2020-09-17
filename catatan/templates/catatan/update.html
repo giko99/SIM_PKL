@@ -1,7 +1,4 @@
-{% include "home/header.html" %}
-{% include "home/sidebar.html" %}
-{% include "home/footer.html" %}
-{% include "home/navbar.html" %}
+{% include "home/index.html" %}
 <div id="layoutSidenav_content">
   <main>
       <div class="container-fluid">
@@ -14,14 +11,14 @@
               <div class="card-body">
                   <div class="table-responsive">
                       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <form action="" method="POST" class="mt-3"></form>
+                        <form action="" method="POST" class="mt-3">
                           {% csrf_token %}
 
                           <div class="form-group">
-                            <input type="text" name="tgl_kegiatan" value="{{data.tgl_kegiatan}}" class="form-control mt-2"><br>
+                            <input type="date" name="tgl_kegiatan" value="{{data.tgl_kegiatan}}" class="form-control mt-2"><br>
                             <input type="text" name="judul" value="{{data.judul}}" class="form-control mt-2"><br>
                             <input type="text" name="ket" value="{{data.ket}}" class="form-control mt-2"><br>
-                            <input type="date" name="upload_img" value="{{data.upload_img}}" class="form-control mt-2"><br>
+                            <input type="file" name="upload_img" value="{{data.upload_img}}" class="form-control mt-2"><br>
                             <input type="submit" class="btn btn-primary mt-2">
                           </div>
                         </form>
