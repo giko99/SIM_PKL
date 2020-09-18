@@ -26,10 +26,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
-    'catatan',
     'home',
-    'mitra',
+    'staf',
     'mahasiswa',
+    'catatan',
+    'mitra',
     'crispy_forms',
 ]
 

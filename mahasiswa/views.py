@@ -53,7 +53,7 @@ def delete(req, id):
 def update(req, id):
     if req.POST:
         pkl = models.Pkl.objects.filter(pk=id).update(judul=req.POST['judul'], nama=req.POST['nama'], alamat=req.POST['alamat'], deskripsi=req.POST['deskripsi'], telp=req.POST['telp'])
-        return redirect('/')
+        return redirect('/mahasiswa')
 
     pkl = models.Pkl.objects.filter(pk=id).first()    
     return render(req, 'mahasiswa/update.html', {

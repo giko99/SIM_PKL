@@ -1,8 +1,7 @@
-{% include "staf/header.html" %}
-{% include "staf/sidebar.html" %}
-{% include "staf/footer.html" %}
-{% include "staf/navbar.html" %}
+{% extends "base_staf.html" %}
 {% load static %}
+
+    {% block content %}
     <div id="layoutSidenav_content">
       <main>
           <div class="container-fluid">
@@ -37,8 +36,6 @@
                                   <td>{{d.fakultas}}</td>
                                   <td>
                                       <a class="btn btn-sm btn-success" href="/staf/{{d.id}}">Detail</a>
-                                      <a class="btn btn-sm btn-warning" href="/staf/{{d.id}}/update">Update</a>
-                                      <a class="btn btn-sm btn-danger" href="/staf/{{d.id}}/delete">Delete</a>
                                   </td>
                                 </tr>
                                     {% endfor %}
@@ -50,6 +47,7 @@
             </div>
         </main>
       </div>
+      {% endblock %}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
