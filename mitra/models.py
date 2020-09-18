@@ -1,6 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Mitra(models.Model):
+    owner = models.ForeignKey(User, on_delete = models.DO_NOTHING,related_name='mitra')
     nama = models.CharField( max_length=255)
     alamat = models.CharField( max_length=255)
     deskripsi = models.TextField(default='')

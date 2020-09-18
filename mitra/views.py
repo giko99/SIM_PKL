@@ -2,16 +2,21 @@ from django.shortcuts import render, redirect
 from . import models, forms
 
 def index(req):
-    mitra = models.Mitra.objects.all()
+    tasks = models.Mitra.objects.filter(owner=req.user)
+    group = req.user.groups.first()
+    if group is not None and group.name == 'staf':
+        tasks = models.Mitra.objects.all()
     return render(req, 'mitra/index.html',{
-        'data': mitra,
+        'data': tasks,
     })
 
 def new(req):
     form_input = forms.MitraForm()
+
     if req.POST:
-        form_input = forms.MitraForm(req.POST)
+        form_input = forms.MitraForm(req.POST, req.FILES)
         if form_input.is_valid():
+            form_input.instance.owner = req.user
             form_input.save()
         return redirect('/mitra/')
     return render(req, 'mitra/new.html',{

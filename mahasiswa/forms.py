@@ -1,8 +1,14 @@
-# from django.forms import ModelForm
+from django.forms import ModelForm
+from mitra.models import Mitra
 
-# from . import models
+from . import models
 
-# class PklForm(ModelForm):
-#     class Meta:
-#         model = models.Pkl
-#         fields = ['judul']
+class PklForm(ModelForm):
+    # class Meta:
+    #     model = model.Mitra
+    #     exclude = ['pic']
+
+    class Meta:
+        model = models.Pkl
+        exclude = ['owner']
+        # fields = ['judul']

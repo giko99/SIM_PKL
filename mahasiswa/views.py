@@ -4,22 +4,39 @@ from mitra.models import Mitra
 
 def index(req):
 
-    pkl = models.Pkl.objects.all()
-    return render(req, 'mahasiswa/index.html', {
-        'data' : pkl,
-    }) 
+    tasks = models.Pkl.objects.filter(owner=req.user)
+    group = req.user.groups.first()
+    if group is not None and group.name == 'staf':
+        tasks = models.Pkl.objects.all()
+    return render(req, 'mahasiswa/index.html',{
+        'data': tasks,  
+    })
 
 def input(req):
 
-    if req.POST:
-        pkl = models.Pkl.objects.create(judul=req.POST['judul'], nama=req.POST['nama'], alamat=req.POST['alamat'], deskripsi=req.POST['deskripsi'], telp=req.POST['telp'])
-        return redirect('/mahasiswa')
-        # if form_input.is_valid():
-        #     form_input.save()
-        # return redirect('/')
+    # if req.POST:
+    #     pkl = models.Pkl.objects.create(judul=req.POST['judul'], nama=req.POST['nama'], alamat=req.POST['alamat'], deskripsi=req.POST['deskripsi'], telp=req.POST['telp'])
+    #     return redirect('/mahasiswa')
+    #     # if form_input.is_valid():
+    #     #     form_input.save()
+    #     # return redirect('/')
 
+    # mitra = Mitra.objects.first()
+    # return render(req, 'mahasiswa/input.html', {
+    #     'd': mitra,
+    # })
+    form_input = forms.PklForm()
+
+    if req.POST:
+        form_input = forms.PklForm(req.POST, req.FILES)
+        if form_input.is_valid():
+            form_input.instance.owner = req.user
+            form_input.save()
+        return redirect('/mahasiswa')
+        
     mitra = Mitra.objects.first()
     return render(req, 'mahasiswa/input.html', {
+        'form' : form_input,
         'd': mitra,
     })
 
@@ -31,7 +48,7 @@ def detail(req, id):
 
 def delete(req, id):
     models.Pkl.objects.filter(pk=id).delete()
-    return redirect('/')
+    return redirect('/mahasiswa')
 
 def update(req, id):
     if req.POST:
