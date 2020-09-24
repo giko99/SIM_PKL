@@ -1,10 +1,7 @@
-{% load static %}
-{% include "staf/header.html" %}
-{% include "staf/navbar.html" %}
-{% include "staf/sidebar.html" %}
-{% include "staf/footer.html" %}
+{% extends "base_staf.html" %}
 
 
+            {% block content %}
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
@@ -73,4 +70,4 @@
                     </div>
                 </main>
             </div>
-            
+            {% endblock %}

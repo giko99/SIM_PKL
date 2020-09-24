@@ -1,0 +1,46 @@
+{% extends "base_staf.html" %}
+
+{% block content %}
+<div id="layoutSidenav_content">
+  <main>
+    <div class="container-fluid">
+      <h1 class="mt-4">Pendaftaran PKL</h1>
+      <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Formulir Pendaftaran PKL</li>
+      </ol>
+      <div class="card-body">
+        <!-- <a type="submit" href="/mahasiswas/input"><button class="btn btn-primary mb-4">Tambah</button></a> -->
+        <div class="table-responsive">
+          <table class="table table-bordered" id="" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Judul</th>
+                <th>Nama Mitra</th>
+                <th>Dosen</th>
+                <th>Tanggal Lab-Sos</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            {% for d in data %}
+            <tr>
+              <td>{{forloop.counter}}</td>
+              <td>{{d.judul}}</td>
+              <td>{{d.nama_mitra}}</td>
+              <td>{{d.dosen}}</td>
+              <td>{{d.tanggal_mulai}} - {{d.tanggal_selesai}}</td>
+              <td>
+                <a type="button" class="btn btn-success" href="/mahasiswas/{{d.id}}">Detail</a>
+                <a type="button" class="btn btn-warning" href="/mahasiswas/{{d.id}}/update">Edit</a>
+                <a type="button" class="btn btn-danger" href="/mahasiswas/{{d.id}}/delete">Hapus</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
+          
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

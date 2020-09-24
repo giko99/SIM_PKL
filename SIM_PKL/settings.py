@@ -25,13 +25,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'bootstrap_datepicker_plus',
     'accounts',
     'home',
     'staf',
     'mahasiswa',
     'catatan',
     'mitra',
-    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +127,7 @@ STATICFILES_DIRS =[
 ]
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/'
+
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}

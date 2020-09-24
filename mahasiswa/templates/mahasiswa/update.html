@@ -17,11 +17,11 @@
                           {% csrf_token %}
 
                           <div class="form-group">
-                            <input type="text" name="judul" value="{{data.judul}}" class="form-control mt-2"><br>
-                            <input type="text" name="nama" value="{{data.nama}}" class="form-control mt-2"><br>
-                            <input type="text" name="alamat" value="{{data.alamat}}" class="form-control mt-2"><br>
-                            <input type="text" name="deskripsi" value="{{data.deskripsi}}" class="form-control mt-2"><br>
-                            <input type="text" name="telp" value="{{data.telp}}" class="form-control mt-2"><br>
+                            Judul Proposal :<input type="text" name="judul" value="{{data.judul}}" class="form-control mt-2"><br>
+                            Nama Mitra :<input type="text" name="nama" value="{{data.nama_mitra}}" class="form-control mt-2" readonly><br>
+                            Dosen Pembimbing Lapangan :<input type="text" name="dosen" value="{{data.dosen}}" class="form-control mt-2"><br>
+                            Tanggal Mulai :<input type="text" name="tanggal_mulai" value="{{data.tanggal_mulai}}" class="form-control mt-2"><br>
+                            Tanggal Selesai :<input type="text" name="tanggal_selesai" value="{{data.tanggal_selesai}}" class="form-control mt-2"><br>
                             <input type="submit" class="btn btn-primary mt-2">
                           </div>
                         </form>
