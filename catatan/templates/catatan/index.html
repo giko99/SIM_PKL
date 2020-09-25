@@ -1,63 +1,164 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div id="layoutSidenav_content">
-      <main>
-          <div class="container-fluid">
-              <h1 class="mt-4">Catatan</h1>
-              <ol class="breadcrumb mb-4">
-                  <li class="breadcrumb-item active">Input Kegiatan</li>
-              </ol>
-              <div class="row">
-                <div class="col-md-10">
-                  <div class="card-body">
-                    <a type="submit" href="/catatan/new"><button class="btn btn-primary mb-4">Tambah</button></a>
-                      <div class="table-responsive">
-                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                              <thead>
-                                <tr>
-                                  <th scope="col">#</th>
-                                  <th scope="col">Tanggal Kegiatan</th>
-                                  <th scope="col">Owner</th>
-                                  <th scope="col">Judul Kegiatan</th>
-                                  <th scope="col">Uraian</th>
-                                  <th scope="col">Upload</th>
-                                  <th scope="col">Action</th>
-                                </tr>
-                                  </thead>
-                                <tr>
-                                    {% for d in data %}
-                                </tr>
-                                <tr>
-                                  <td>{{forloop.counter}}</td>
-                                  <td>{{d.tgl_kegiatan}}</td>
-                                  <td>{{d.owner}}</td>
-                                  <td>{{d.judul}}</td>
-                                  <td>{{d.ket}}</td>
-                                  <td>
-                                    <a href="/media/{{d.upload_img}}">File</a>
-                                  </td>
-                                  <td>
-                                      <a class="btn btn-sm btn-success" href="/catatan/{{d.id}}">Detail</a>
-                                      <!-- <a class="btn btn-sm btn-warning" href="/catatan/{{d.id}}/update">Update</a> -->
-                                      <a class="btn btn-sm btn-danger" href="/catatan/{{d.id}}/delete">Delete</a>
-                                  </td>
-                                </tr>
-                                {% endfor %}
-                            </table>
+<div id="layoutSidenav_content">
+  <main>
+    <div class="container-fluid">
+      <h1 class="mt-4">Catatan</h1>
+      <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Input Kegiatan</li>
+      </ol>
+      <div class="row">
+        <div class="col-md-10">
+          <div class="card-body">
+            <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#tambah">
+              <span>Input Catatan</span>
+            </button>
+            <div class="table-responsive">
+              <table class="table table-responsive" id="dataTable" width="100%" cellspacing="2">
+                <thead>
+                  <tr>
+                    <th scope="">#</th>
+                    <th scope="col">No</th>
+                    <th scope="col">Tanggal Kegiatan</th>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Judul Kegiatan</th>
+                    <th scope="col">Uraian</th>
+                    <th scope="col">Upload</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tr>
+                  {% for d in data %}
+                </tr>
+                <tr>
+                  <td>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">
+                          <input type="checkbox" aria-label="Checkbox for following text input" data-toggle= "modal" data-target="#delete-{{d.id}}"">
+                        </div>
                       </div>
+                    </div>
+                  </td>
+                  <td>{{forloop.counter}}</td>
+                  <td>{{d.tgl_kegiatan}}</td>
+                  <td>{{d.owner}}</td>
+                  <td>{{d.judul}}</td>
+                  <td>{{d.ket}}</td>
+                  <td>
+                    {% for img_obj in d.catatan.all %}
+                    <a href="{{img_obj}}">File</a>
+                    {% endfor %} </td>
+                  <td>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detail-{{d.id}}">
+                      <i class="fas fa-eye"></i></button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-{{d.id}}">
+                      <i class="fas fa-trash-alt"></i></i></button>
+                  </td>
+                </tr>
+
+                <div class="modal fade" id="detail-{{d.id}}" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="detail">Detail Data</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="">
+                          Tanggal Kegiatan : {{d.tgl_kegiatan}}
+                        </div>
+                        <div class="">
+                          Owner : {{d.owner}}
+                        </div>
+                        <div class="">
+                          Judul : {{d.judul}}
+                        </div>
+                        <div class="">
+                          Uraian : {{d.ket}}
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-          </div>
-      </main>
-    </div>
+                <!-- modal delete -->
+                <div class="modal fade" id="delete-{{d.id}}" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="delete">Delete Data LAB-SOS</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="modal-body">
+                          <p> Do You want To delete
+                            <strong>{{d.id}}</strong>?</p>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button class="btn" type="button" data-dismiss="modal" aria-label="Close">
+                          No
+                        </button>
+                        <a href="/catatan/{{d.id}}/delete" type="submit" class="btn btn-danger">Yes</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
 
-    {% endblock %}
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  </body>
+                <!-- Modal input -->
+                <div class="modal fade" id="tambah" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="input">Tambah Catatan</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="" method="post" class="mt-3" enctype="multipart/form-data">
+                          {% load crispy_forms_tags %}
+                          {% csrf_token %}
+                          {{ form|crispy }}
+                          {{ form_catatan|crispy }}
+                          {{ form_gambar|crispy }}
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Input</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </table>
+            </div>
+          </div>
+        </div>
+  </main>
+</div>
+
+{% endblock %}
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+  integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+
 </html>

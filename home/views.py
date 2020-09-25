@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import get_user_model
+from mahasiswa.models import Pkl
+from mitra.models import Mitra
 
 def index(req):
     
@@ -11,3 +13,8 @@ def index(req):
     else:
         return render(req, 'home/index.html')
 
+    counts = Mitra.objects.count()
+    print(counts)
+    return render(request, 'staf/index.html', {
+        'data':counts
+    })

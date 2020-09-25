@@ -9,7 +9,7 @@ class PklForm(ModelForm):
 
     class Meta:
         model = models.Pkl
-        exclude = ['owner']
+        exclude = ['owner', 'approve']
         widgets = {
             'tanggal_mulai': DatePickerInput(),
             'tanggal_selesai': DatePickerInput(),

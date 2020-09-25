@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from . import models, forms
 from mitra.models import Mitra
+from bootstrap_datepicker_plus import DatePickerInput
 
 def index(req):
 
+    tasks_approved = models.Pkl.objects.filter(owner=req.user,approve=True).first()
     tasks = models.Pkl.objects.filter(owner=req.user)
     form_input = forms.PklForm()
 
@@ -17,12 +19,13 @@ def index(req):
             print(form_input.errors)
             print('databelumasuk')
 
-    group = req.user.groups.first()
-    if group is not None and group.name == 'staf':
-        tasks = models.Pkl.objects.all()
+    # group = req.user.groups.first()
+    # if group is not None and group.name == 'staf':
+    #     tasks = models.Pkl.objects.all()
     return render(req, 'mahasiswa/index.html',{
         'form' : form_input,
-        'data': tasks,  
+        'data': tasks,
+        'data_approved': tasks_approved,
     })
     
 
@@ -101,6 +104,11 @@ def delete_staf(req, id):
 
 
 def update(req, id):
+    widgets = {
+        'tanggal_mulai': DatePickerInput(),
+        'tanggal_selesai': DatePickerInput(),
+    }
+    
     if req.POST:
         pkl = models.Pkl.objects.filter(pk=id).update(judul=req.POST['judul'], dosen=req.POST['dosen'], tanggal_mulai=req.POST['tanggal_mulai'], tanggal_selesai=req.POST['tanggal_selesai'])
         return redirect('/mahasiswa')
@@ -111,6 +119,10 @@ def update(req, id):
     })
 
 def update_staf(req, id):
+    widgets = {
+        'tanggal_mulai': DatePickerInput(),
+        'tanggal_selesai': DatePickerInput(),
+    }
     if req.POST:
         pkl = models.Pkl.objects.filter(pk=id).update(judul=req.POST['judul'], dosen=req.POST['dosen'], tanggal_mulai=req.POST['tanggal_mulai'], tanggal_selesai=req.POST['tanggal_selesai'])
         return redirect('/mahasiswas')
@@ -120,14 +132,10 @@ def update_staf(req, id):
         'data': pkl,
     })
 
-    # if req.POST:
-    #     pkl = models.Pkl.objects.create(judul=req.POST['judul'], nama=req.POST['nama'], alamat=req.POST['alamat'], deskripsi=req.POST['deskripsi'], telp=req.POST['telp'])
-    #     return redirect('/mahasiswa')
-    #     # if form_input.is_valid():
-    #     #     form_input.save()
-    #     # return redirect('/')
+def approve(req, id):
+    a = models.Pkl.objects.filter(pk=id).update(approve=True)
+    return redirect('/mahasiswas')
 
-    # mitra = Mitra.objects.first()
-    # return render(req, 'mahasiswa/input.html', {
-    #     'd': mitra,
-    # })
+def approve_batal(req, id):
+    a = models.Pkl.objects.filter(pk=id).update(approve=False)
+    return redirect('/mahasiswas')
