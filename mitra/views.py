@@ -84,7 +84,7 @@ def delete_staf(req, id):
 
 def update(req, id):
     if req.POST:
-        mitra = models.Mitra.objects.filter(pk=id).update(nama=req.POST['nama'], alamat=req.POST['alamat'], deskripsi=req.POST['deskripsi'], pic=req.POST['pic'], telp=req.POST['telp'])
+        mitra = models.Mitra.objects.filter(pk=id).update(nama_mitra=req.POST['nama_mitra'], alamat=req.POST['alamat'], deskripsi=req.POST['deskripsi'], pic=req.POST['pic'], telp=req.POST['telp'])
         return redirect('/mitra/')
 
     mitra = models.Mitra.objects.filter(pk=id).first()
@@ -94,7 +94,7 @@ def update(req, id):
 
 def update_staf(req, id):
     if req.POST:
-        mitra = models.Mitra.objects.filter(pk=id).update(nama=req.POST['nama'], alamat=req.POST['alamat'], deskripsi=req.POST['deskripsi'], pic=req.POST['pic'], telp=req.POST['telp'])
+        mitra = models.Mitra.objects.filter(pk=id).update(nama_mitra=req.POST['nama_mitra'], alamat=req.POST['alamat'], deskripsi=req.POST['deskripsi'], pic=req.POST['pic'], telp=req.POST['telp'])
         return redirect('/mitras/')
 
     mitra = models.Mitra.objects.filter(pk=id).first()
