@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from . import models, forms
 from mitra.models import Mitra
 from bootstrap_datepicker_plus import DatePickerInput
+from django.contrib import messages
+
+
 
 def index(req):
 
@@ -12,12 +15,14 @@ def index(req):
     if req.POST:
         form_input = forms.PklForm(req.POST, req.FILES)
         if form_input.is_valid():
-            form_input.instance.owner = req.user
+            form_input.instance.owner = req.user    
             form_input.save()
+            messages.success(req, 'Successfully Sent The Message!')
             return redirect('/mahasiswa')
         else:
-            print(form_input.errors)
-            print('databelumasuk')
+            messages.warning(req, 'Please correct the error below.')
+            # print(form_input.errors)
+            # print('databelumasuk')
 
     # group = req.user.groups.first()
     # if group is not None and group.name == 'staf':
@@ -41,7 +46,7 @@ def index_staf(req):
         return redirect('/mahasiswas')
 
     group = req.user.groups.first()
-    if group is not None and group.name == 'staf':
+    if group is not None and group.name == 'Staf':
         tasks = models.Pkl.objects.all()
     return render(req, 'mahasiswas/index.html',{
         'data': tasks,  
