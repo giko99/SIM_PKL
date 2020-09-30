@@ -3,6 +3,11 @@ from . import models, forms
 from mitra.models import Mitra
 from bootstrap_datepicker_plus import DatePickerInput
 from django.contrib import messages
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> cebc689be8bf5475a31fab69f31fd78ff1957f39
 
 def index(req):
 
@@ -19,13 +24,22 @@ def index(req):
     if req.POST:
         form_input = forms.PklForm(req.POST, req.FILES)
         if form_input.is_valid():
-            form_input.instance.owner = req.user
+            form_input.instance.owner = req.user    
             form_input.save()
+<<<<<<< HEAD
             messages.success(req, 'Data telah ditambahkan.')
             return redirect('/mahasiswa')
         else:
             messages.danger(req, 'A problem has been occurred while submitting your data.')
 
+=======
+            messages.success(req, 'Successfully Sent The Message!')
+            return redirect('/mahasiswa')
+        else:
+            messages.warning(req, 'Please correct the error below.')
+            # print(form_input.errors)
+            # print('databelumasuk')
+>>>>>>> cebc689be8bf5475a31fab69f31fd78ff1957f39
 
     # group = req.user.groups.first()
     # if group is not None and group.name == 'staf':
@@ -51,7 +65,7 @@ def index_staf(req):
         
 
     group = req.user.groups.first()
-    if group is not None and group.name == 'staf':
+    if group is not None and group.name == 'Staf':
         tasks = models.Pkl.objects.all()
     return render(req, 'mahasiswas/index.html',{
         'data': tasks,  
