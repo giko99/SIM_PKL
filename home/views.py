@@ -6,9 +6,9 @@ from mitra.models import Mitra
 def index(req):
     
     group = req.user.groups.first()
-    if group is not None and group.name == 'Dosen':
+    if group is not None and group.name == 'dosen':
         return render(req, 'dosen/index.html')
-    elif group is not None and group.name == 'Staf':
+    elif group is not None and group.name == 'staf':
         return render(req, 'staf/index.html')
     else:
         return render(req, 'home/index.html')

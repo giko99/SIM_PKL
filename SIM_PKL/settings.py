@@ -1,5 +1,4 @@
 import os
-from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -76,9 +75,9 @@ WSGI_APPLICATION = 'SIM_PKL.wsgi.application'
 DATABASES = {
         'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'book',
-        'USER': 'tatam',
-        'PASSWORD': 'katakanlah123',
+        'NAME': 'simpkl',
+        'USER': 'giko99',
+        'PASSWORD': 'gikoriyo382',
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -132,4 +131,14 @@ MEDIA_URL = '/media/'
 
 BOOTSTRAP4 = {
     'include_jquery': True,
+}
+
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS ={
+    messages.DEBUG : 'alert-info',
+    messages.INFO : 'alert-info',
+    messages.ERROR : 'alert-danger',
+    messages.SUCCESS : 'alert-success',
+    messages.WARNING : 'alert-warning',
 }

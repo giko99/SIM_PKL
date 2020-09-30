@@ -4,12 +4,10 @@
 <div id="layoutSidenav_content">
   <main>
     <div class="container-fluid">
-      <h1 class="mt-4">Pendaftaran Lab-Sos</h1>
+      <h1 class="mt-4">Pendaftaran PKL</h1>
       <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Formulir Pendaftaran Lab-Sos</li>
+        <li class="breadcrumb-item active">Formulir Pendaftaran PKL</li>
       </ol>
-      <col class="row justify-content-center">
-      <div class="col"></div>
       <div class="card-body">
         <!-- <a type="submit" href="/mahasiswas/input"><button class="btn btn-primary mb-4">Tambah</button></a> -->
         <div class="table-responsive">
@@ -46,7 +44,7 @@
                 {% if d.approve == True %}
                 <a type="button" class="btn btn-warning" href="/mahasiswas/{{d.id}}/approve-batal"><i class="fas fa-minus-circle"></i></a>
                 {% else %}
-                <a type="button" class="btn btn-primary btn-sm" href="/mahasiswas/{{d.id}}/approve">Approved</a>
+                <a type="button" class="btn btn-primary" href="/mahasiswas/{{d.id}}/approve"><i class="fas fa-check"></i></a>
                 {% endif %}
                 <a type="button" class="btn btn-danger" href="/mahasiswas/{{d.id}}/delete"><i class="fas fa-trash-alt"></i></a>
               </td>
