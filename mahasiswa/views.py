@@ -3,11 +3,6 @@ from . import models, forms
 from mitra.models import Mitra
 from bootstrap_datepicker_plus import DatePickerInput
 from django.contrib import messages
-<<<<<<< HEAD
-=======
-
-
->>>>>>> cebc689be8bf5475a31fab69f31fd78ff1957f39
 
 def index(req):
 
