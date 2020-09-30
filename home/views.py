@@ -14,7 +14,6 @@ def index(req):
         return render(req, 'home/index.html')
 
     counts = Mitra.objects.count()
-    print(counts)
     return render(request, 'staf/index.html', {
         'data':counts
     })

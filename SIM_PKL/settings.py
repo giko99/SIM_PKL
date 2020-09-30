@@ -29,10 +29,11 @@ INSTALLED_APPS = [
     'bootstrap_datepicker_plus',
     'accounts',
     'home',
-    'staf',
+    'dosen',
     'mahasiswa',
     'catatan',
     'mitra',
+    # 'countable_field',
 ]
 
 MIDDLEWARE = [
@@ -130,4 +131,14 @@ MEDIA_URL = '/media/'
 
 BOOTSTRAP4 = {
     'include_jquery': True,
+}
+
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS ={
+    messages.DEBUG : 'alert-info',
+    messages.INFO : 'alert-info',
+    messages.ERROR : 'alert-danger',
+    messages.SUCCESS : 'alert-success',
+    messages.WARNING : 'alert-warning',
 }

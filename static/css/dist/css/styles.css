@@ -2443,6 +2443,12 @@ textarea.form-control {
   line-height: 1.5;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
 }
 @media (prefers-reduced-motion: reduce) {
   .btn {
@@ -4340,6 +4346,7 @@ input[type=button].btn-block {
   color: #fff;
 }
 
+
 .card {
   position: relative;
   display: flex;
@@ -4376,6 +4383,10 @@ input[type=button].btn-block {
   padding: 1.25rem;
 }
 
+.card:hover{ 
+     box-shadow: 1px 8px 20px grey;
+    -webkit-transition:  box-shadow .6s ease-in;
+  }
 .card-title {
   margin-bottom: 0.75rem;
 }

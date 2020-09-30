@@ -11,6 +11,7 @@ urlpatterns = [
     path('mahasiswa/', include('mahasiswa.urls')),
     path('mahasiswas/', include('mahasiswa.urls_staf')),
     path('mitra/', include('mitra.urls')),
+    path('dosen/', include('dosen.urls')),
     path('mitras/', include('mitra.urls_staf')),
     path('admin/', admin.site.urls),
 ]

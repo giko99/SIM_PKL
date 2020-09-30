@@ -2,11 +2,18 @@ from django.shortcuts import render, redirect
 from . import models, forms
 from mitra.models import Mitra
 from bootstrap_datepicker_plus import DatePickerInput
+from django.contrib import messages
 
 def index(req):
 
     tasks_approved = models.Pkl.objects.filter(owner=req.user,approve=True).first()
     tasks = models.Pkl.objects.filter(owner=req.user)
+    # ambil tanggal mulai 
+    # tanggal mulai ditamnah 3 bulan 
+    # ambil tanggal selesai
+    # checked pake if apakah tanggal selesai lebih dari hasil dari tanggal yang ditentukan
+
+    # untuk menentukan kapan mulainya maka harus ada pengecekan di bagian home
     form_input = forms.PklForm()
 
     if req.POST:
@@ -14,10 +21,11 @@ def index(req):
         if form_input.is_valid():
             form_input.instance.owner = req.user
             form_input.save()
+            messages.success(req, 'Data telah ditambahkan.')
             return redirect('/mahasiswa')
         else:
-            print(form_input.errors)
-            print('databelumasuk')
+            messages.danger(req, 'A problem has been occurred while submitting your data.')
+
 
     # group = req.user.groups.first()
     # if group is not None and group.name == 'staf':
@@ -38,7 +46,9 @@ def index_staf(req):
         if form_input.is_valid():
             form_input.instance.owner = req.user
             form_input.save()
+            messages.success(req, 'Data telah ditambahkan.')
         return redirect('/mahasiswas')
+        
 
     group = req.user.groups.first()
     if group is not None and group.name == 'staf':
@@ -96,6 +106,7 @@ def detail_staf(req, id):
 
 def delete(req, id):
     models.Pkl.objects.filter(pk=id).delete()
+    messages.success(req, 'data telah di hapus.')
     return redirect('/mahasiswa')
 
 def delete_staf(req, id):
@@ -111,6 +122,7 @@ def update(req, id):
     
     if req.POST:
         pkl = models.Pkl.objects.filter(pk=id).update(judul=req.POST['judul'], dosen=req.POST['dosen'], tanggal_mulai=req.POST['tanggal_mulai'], tanggal_selesai=req.POST['tanggal_selesai'])
+        messages.info(req, 'data telah di perbarui.')
         return redirect('/mahasiswa')
 
     pkl = models.Pkl.objects.filter(pk=id).first()    

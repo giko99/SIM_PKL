@@ -11,12 +11,13 @@ class Pkl(models.Model):
     dosen = models.CharField(max_length=255, default='')
     tanggal_mulai = models.DateField(default=datetime.now)
     tanggal_selesai = models.DateField()
+    
     approve = models.BooleanField(default=False)
 
+    def tanggal_mulai_format(self):
+        return self.tanggal_selesai.strftime('%Y-%m-%d')
     def tanggal_selesai_format(self):
-        return self.tanggal_selesai.strftime('%Y-%m=%d')
-    def tanggal_selesai_format(self):
-        return self.tanggal_selesai.strftime('%Y-%m=%d')
+        return self.tanggal_selesai.strftime('%Y-%m-%d')
 
 
 
