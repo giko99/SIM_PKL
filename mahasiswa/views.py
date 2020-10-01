@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from . import models, forms
+from dosen import models as dosen_models
 from mitra.models import Mitra
+from catatan.models import Catatan
 from bootstrap_datepicker_plus import DatePickerInput
 from django.contrib import messages
 
@@ -151,3 +153,19 @@ def approve(req, id):
 def approve_batal(req, id):
     a = models.Pkl.objects.filter(pk=id).update(approve=False)
     return redirect('/mahasiswas')
+
+def index_dosen(req):
+    group = req.user.groups.first() #mengambil group user
+    tasks = models.Pkl.objects.all() # mengambil semua object yang ada di models pkl
+    if group is not None and group.name == 'dosen': # mendefinisikan bahwa ini adalah dosen
+        pkls = models.Pkl.objects.filter(nama_dosen=req.user) # memfilter bahwa satu mahasiswa hanya boleh menginputkan satu dosen
+    return render(req, 'dosenah/index.html',{
+        'data': pkls,
+    })
+
+def detail_dosen(req, id):
+    pkl = models.Pkl.objects.filter(pk=id).first()
+    catatans = Catatan.objects.filter(owner=pkl.owner) # mengambil semua object yang ada di models Catatan
+    return render(req, 'dosenah/detail.html',{
+        'data': catatans,
+    })

@@ -6,7 +6,6 @@ from mitra.models import Mitra
 from . import models
 
 class PklForm(ModelForm):
-
     class Meta:
         model = models.Pkl
         exclude = ['owner', 'approve']

@@ -12,8 +12,8 @@ def index(req):
         return render(req, 'staf/index.html')
     else:
         return render(req, 'home/index.html')
-
-    counts = Mitra.objects.count()
+        
+    counts = models.Mitra.objects.count()
     return render(request, 'staf/index.html', {
         'data':counts
     })

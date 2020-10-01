@@ -69,3 +69,23 @@ def delete(req, id):
 #     return render(req, 'catatan/update.html', {
 #         'data': task,
 #     })
+
+def index_dosen(req):
+
+    group = req.user.groups.first() #mengambil group user
+    catatans = models.Catatan.objects.all() # mengambil semua object yang ada di models Catatan
+    if group is not None and group.name == 'dosen': # mendefinisikan bahwa ini adalah dosen
+        catatans = models.Catatan.objects.filter(owner=req.user)
+    return render(req, 'dosenah/index.html',{
+        'data': catatans,
+    })
+
+def detail_dosen(req):
+
+    group = req.user.groups.first() #mengambil group user
+    catatans = models.Catatan.objects.all() # mengambil semua object yang ada di models Catatan
+    if group is not None and group.name == 'dosen': # mendefinisikan bahwa ini adalah dosen
+        catatans = models.Catatan.objects.filter(owner=req.user)
+    return render(req, 'dosenah/index.html',{
+        'data': catatans,
+    })

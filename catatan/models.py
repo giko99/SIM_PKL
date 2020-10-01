@@ -9,7 +9,7 @@ class Catatan(models.Model):
     owner = models.ForeignKey(User, on_delete = models.DO_NOTHING,related_name='catatan')
     tgl_kegiatan = models.DateField(default=datetime.now)
     judul = models.CharField(max_length=100)
-    ket = models.TextField(max_length=200)
+    ket = models.TextField(max_length=500, help_text="maksimal 500 kata")
     
 class Gambar(models.Model):
     upload_img = models.ImageField(default='', upload_to='images/', null=False, blank=True)

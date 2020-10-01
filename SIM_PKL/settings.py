@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'mahasiswa',
     'catatan',
     'mitra',
-    # 'countable_field',
+    'countable_field',
 ]
 
 MIDDLEWARE = [
