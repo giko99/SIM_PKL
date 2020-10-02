@@ -1,8 +1,6 @@
 {% extends "base_staf.html" %}
 
 {% block content %}
-<div id="layoutSidenav_content">
-  <main>
     <div class="container-fluid">
       <h1 class="mt-4" style="text-align: center;">Pendaftaran PKL</h1>
       <ol class="breadcrumb mb-4">
@@ -12,7 +10,7 @@
         <div class="table-responsive">
           <table class="table table-hover" id="dataTable" width="100%" cellspacing="2">
             <thead>
-              <tr>
+              <tr class="thead-dark">
                 <th>No</th>
                 <th>Nim</th>
                 <th>Judul</th>
@@ -45,8 +43,7 @@
                 {% else %}
                 <a type="button" class="btn btn-primary" href="/mahasiswas/{{d.id}}/approve"><i class="fas fa-check"></i></a>
                 {% endif %}
-                <a type="button" class="btn btn-danger" href="/mahasiswas/{{d.id}}/delete"><i class="fas fa-trash-alt"></i></a>
-              </td>
+                <a tybordered
             </tr>
             {% endfor %}
           </table>
@@ -54,6 +51,4 @@
         </div>
       </div>
     </div>
-  </main>
-</div>
 {% endblock %}

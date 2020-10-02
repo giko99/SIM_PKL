@@ -113,6 +113,7 @@ def delete(req, id):
 
 def delete_staf(req, id):
     models.Pkl.objects.filter(pk=id).delete()
+    messages.success(req, 'data telah di hapus.')
     return redirect('/mahasiswas')
 
 
@@ -123,7 +124,11 @@ def update(req, id):
     }
     
     if req.POST:
-        pkl = models.Pkl.objects.filter(pk=id).update(judul=req.POST['judul'], dosen=req.POST['dosen'], tanggal_mulai=req.POST['tanggal_mulai'], tanggal_selesai=req.POST['tanggal_selesai'])
+        pkl = models.Pkl.objects.filter(pk=id).update(
+            judul=req.POST['judul'], 
+            nama_dosen=req.POST['nama_dosen'], 
+            tanggal_mulai=req.POST['tanggal_mulai'], 
+            tanggal_selesai=req.POST['tanggal_selesai'])
         messages.info(req, 'data telah di perbarui.')
         return redirect('/mahasiswa')
 
@@ -138,7 +143,11 @@ def update_staf(req, id):
         'tanggal_selesai': DatePickerInput(),
     }
     if req.POST:
-        pkl = models.Pkl.objects.filter(pk=id).update(judul=req.POST['judul'], dosen=req.POST['dosen'], tanggal_mulai=req.POST['tanggal_mulai'], tanggal_selesai=req.POST['tanggal_selesai'])
+        pkl = models.Pkl.objects.filter(pk=id).update(
+            judul=req.POST['judul'], 
+            nama_dosen=req.POST['nama_dosen'], 
+            tanggal_mulai=req.POST['tanggal_mulai'], 
+            tanggal_selesai=req.POST['tanggal_selesai'])
         return redirect('/mahasiswas')
 
     pkl = models.Pkl.objects.filter(pk=id).first()    

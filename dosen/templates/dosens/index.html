@@ -2,8 +2,6 @@
 {% load static %}
 
 {% block content %}
-<div id="layoutSidenav_content">
-    <main>
         <div class="container-fluid">
             <h1 class="mt-4" style="text-align: center;">DATA DOSEN</h1>
             <ol class="breadcrumb mb-4">
@@ -13,14 +11,11 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table" id="dataTable" width="100%" cellspacing="2">
-                              <button type="submit" class="btn btn-primary mb-4" data-toggle="modal"
-                                    data-target="#input" style="background-color: #036564;">
-                                    <span class="material-icons">
-                                        add_circle
-                                        </span>
-                                </button>
+                                <button type="button" class="btn btn-lg btn-primary mb-4 rounded-pill" data-toggle="modal" data-target="#input">
+                                    <span><span>&#43;</span> I N P U T</span>
+                                  </button>
                                 <thead>
-                                    <tr>
+                                    <tr class="thead-dark">
                                         <th scope="col">#</th>
                                         <th scope="col">Nama Dosen</th>
                                         <th scope="col">NIP</th>
@@ -204,9 +199,6 @@
                                 </div>
                             </table>
                         </div>
-
-    </main>
-</div>
 
 {% endblock %}
 <!-- Optional JavaScript -->
