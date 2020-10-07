@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'mahasiswa',
     'catatan',
     'mitra',
+    # 'comment',
     'countable_field',
 ]
 

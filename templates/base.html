@@ -33,7 +33,7 @@
         <!-- Navbar-->
         <ul class="navbar-nav ml-auto ml-md-12">
             <li class="sb-topnav navbar navbar-expand navbar-dark">
-                <h6 class="navbar-dark">{{user}}</h6>
+                <h6 class="navbar-dark" style="margin-top: 9px;">{{user}}</h6>
             </li>
             <li class="sb-topnav navbar navbar-expand navbar-dark">
                 <a class="nav-link dropdown-toggle navbar-dark" id="userDropdown" href="#" role="button" data-toggle="dropdown"
@@ -53,23 +53,27 @@
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-            <div class="sb-sidenav-menu" style="background-color: #625F53;">
+            <div class="sb-sidenav-menu" style="background-color: #625f53;">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Interface</div>
+                    <div class="sb-sidenav-menu-heading" style="color: honeydew;">Interface</div>
                     <a class="nav-link collapsed" href="/">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        Dashboard
+                        <div class="sb-nav-link-icon btn btn-sm btn-warning rounded-pill"
+                            style="margin-top: 10px; color: black; width: 100%;"><i
+                                class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </div>
                     </a>
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                        aria-expanded="false" aria-controls="collapsePages">
-                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                    aria-expanded="false" aria-controls="collapsePages">
+                    <div class="sb-nav-link-icon btn btn-sm btn-warning rounded-pill"
+                        style="margin-top: 10px; color: black; width: 100%;"><i class="fas fa-book-open"></i>
                         Manajement
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
+                    </div>
+                </a>
                     <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                         data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="/mahasiswa">Pendaftaran PKL</a>
+                            <h6 style="color: aliceblue;"><a class="nav-link" href="/mahasiswa">Pendaftaran PKL</a></h6>
                             {% if data_approved.approve == True %}
                             <a class="nav-link" href="/catatan">Catatan Harian</a>
                             {% endif %}

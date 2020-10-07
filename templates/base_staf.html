@@ -17,9 +17,9 @@
 </head>
 
 <body class="sb-nav-auto">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #3c53d8;">
-        <a class="navbar-brand" href="/">SIM-LABSOS</a>
-        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i
+    <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: rgb(255, 214, 0);">
+        <h5 class="navbar-dark" style="width: 225px;padding-left: 1rem; padding-right: 1rem; margin: 0;">SIM-LABSOS</h5>
+        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#" style="color: black;"><i
                 class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <!-- <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -33,12 +33,13 @@
         </form> -->
         <!-- Navbar-->
         <ul class="navbar-nav ml-auto ml-md-12">
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">{{user}}</a>
+            <li class="sb-topnav navbar navbar-expand navbar-dark">
+                <h6 class="navbar-dark" style="margin-top: 9px;">{{user}}</h6>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+            <li class="sb-topnav navbar navbar-expand navbar-dark">
+                <a class="nav-link dropdown-toggle navbar-dark" id="userDropdown" href="#" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: black;"><i
+                        class="fas fa-user fa-fw"></i></a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="#">Settings</a>
                     <a class="dropdown-item" href="#">Activity Log</a>
@@ -52,18 +53,22 @@
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                <div class="sb-sidenav-menu" style="background-color: #131035;">
+                <div class="sb-sidenav-menu" style="background-color: #625f53;">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Interface</div>
+                        <div class="sb-sidenav-menu-heading" style="color: honeydew;">Interface</div>
                         <a class="nav-link collapsed" href="/">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
+                            <div class="sb-nav-link-icon btn btn-sm btn-warning rounded-pill"
+                                style="margin-top: 10px; color: black; width: 100%;"><i
+                                    class="fas fa-tachometer-alt"></i>
+                                Dashboard
+                            </div>
                         </a>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                             aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Manajement
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            <div class="sb-nav-link-icon btn btn-sm btn-warning rounded-pill"
+                                style="margin-top: 10px; color: black; width: 100%;"><i class="fas fa-book-open"></i>
+                                Manajement
+                            </div>
                         </a>
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                             data-parent="#sidenavAccordion">
