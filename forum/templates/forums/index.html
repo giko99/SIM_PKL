@@ -1,0 +1,96 @@
+{% extends "base_dosen.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="mt-4" style="text-align: center;">DATA FORUM</h1>
+    <ol class="breadcrumb mb-4">
+    </ol>
+    <button type="button" class="btn btn-warning mb-4 rounded-pill" data-toggle="modal" data-target="#input"
+        style="background-color:rgb(255, 214, 0); color: black;">
+        <span><span>&#43;</span><b> I N P U T </b></span>
+    </button>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-body">
+                    <div class="card" style="width: ">
+                        {% for d in data %}
+                        <div class="card card-primary card-outline">
+                            <div class="card-header">
+                                <h5 class="card-title m-0">SIM-Labsos</h5>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">{{d.nama_mitra}}</h4>
+
+                                <p class="card-text">{{d.waktu}}</p>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-danger" data-toggle="modal"
+                                        data-target="#delete-{{d.id}}"><i class="fas fa-trash-alt"></i>
+                                    </button>
+                                    <a href="/forums/{{d.id}}" type="submit" class="btn btn-primary">Masuk Grup</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal Delete -->
+                        <div class="modal fade" id="delete-{{d.id}}" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="delete">Delete Data LAB-SOS</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="modal-body">
+                                            <p> Do You want To delete
+                                                <strong>{{d.nama_mitra}}</strong>?
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn" type="button" data-dismiss="modal" aria-label="Close">
+                                            No
+                                        </button>
+                                        <a href="/forums/{{d.id}}/delete" type="submit" class="btn btn-danger">Yes</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                        <!-- Modal Input -->
+                        <div class="modal fade" id="input" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="input">Input Forum</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="" method="post" class="mt-3" enctype="multipart/form-data">
+                                            {% load crispy_forms_tags %}
+                                            {% csrf_token %}
+                                            {{ form|crispy }}
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Input</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

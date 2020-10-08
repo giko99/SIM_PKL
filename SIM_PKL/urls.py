@@ -16,6 +16,7 @@ urlpatterns = [
     path('dosens/', include('dosen.urls_staf')),
     path('mitra/', include('mitra.urls')),
     path('mitras/', include('mitra.urls_staf')),
+    path('forums/', include('forum.urls_dosen')),
     path('admin/', admin.site.urls),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
