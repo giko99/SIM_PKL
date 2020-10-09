@@ -10,4 +10,14 @@ class ForumForm(ModelForm):
 class PostingForm(ModelForm):
     class Meta :
         model = models.Posting
-        exclude=['user','waktu']
+        exclude=['forum','owner','waktu']
+
+class BalasForm(ModelForm):
+    class Meta:
+        model = models.Balas
+        exclude = ['waktu']
+
+class KomenForm(ModelForm):
+    class Meta:
+        model = models.Komen
+        exclude = ['waktu']

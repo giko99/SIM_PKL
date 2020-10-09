@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'forum',
     # 'comment',
     'countable_field',
+    'gm2m',
 ]
 
 MIDDLEWARE = [

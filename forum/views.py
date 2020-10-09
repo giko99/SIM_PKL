@@ -15,8 +15,6 @@ def index_dosen(req):
             form_input.save()
             messages.success(req, 'Data telah ditambahkan.')
             return redirect('/forums/')
-        else:
-            messages.danger(req, 'A problem has been occurred while submitting your data.')
 
     return render(req, 'forums/index.html',{
         'data': tasks,
@@ -30,27 +28,41 @@ def delete_dosen(req, id):
 
 def detail_forum(req, id):
     forum = models.Forum.objects.filter(pk=id).first() 
-    chat = models.Posting.objects.all()
     form_input = forms.PostingForm()
+    form_komen = forms.KomenForm()
+    form_balas = forms.BalasForm()
 
     if req.POST:
         form_input = forms.PostingForm(req.POST, req.FILES)
         if form_input.is_valid():
             form_input.instance.owner = req.user
+            form_input.instance.forum = forum
             form_input.save()
-            return redirect('/forums/detail')
+        return redirect(f'/forums/{id}')
+    # if req.POST:
+    #     form_komen = forms.PostingForm(req.POST, req.FILES)
+    #     if form_komen.is_valid():
+    #         form_komen.instance.owner = req.user
+    #         form_komen.save()
+    #         return redirect('/forums/detail')
+
+    # if req.POST:
+    #     form_balas = forms.PostingForm(req.POST, req.FILES)
+    #     if form_balas.is_valid():
+    #         form_balas.instance.owner = req.user
+    #         form_balas.save()
+    #         return redirect('/forums/detail')
 
     return render(req, 'forums/detail.html', {
-        'chat': chat,
         'form': form_input,
+        'form_komen': form_komen,
+        'form_balas': form_balas,
         'data': forum,
     })
 
 
-# def masuk_forum(req, id):
-#     data = models.Komentar.objects.all()
-#     input_comment = forms.CommentForm()
-#     if req.POST:
-#         masuk = forms.CommentForm()
-
+def delete_posting(req, id, id_posting):
+    models.Posting.objects.filter(pk=id_posting).delete()
+    messages.success(req, 'data telah di hapus.')
+    return redirect(f'/forums/{id}')
 
