@@ -7,7 +7,7 @@ from mitra.models import Mitra
 
 class Forum(models.Model):
     nama_mitra = models.ForeignKey(Mitra, on_delete = models.DO_NOTHING)
-    mahasiswa = models.ManyToManyField(User,related_name='mahasiswas')
+    mahasiswa = models.ForeignKey(User,on_delete = models.DO_NOTHING,related_name='mahasiswas')
     waktu = models.DateTimeField(default=datetime.now)
     desc = models.TextField()
     # upload_img = models.ImageField(default='', upload_to='images/', null=False, blank=True)
