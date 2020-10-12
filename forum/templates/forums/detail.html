@@ -8,7 +8,7 @@
         <form action="" method="post" class="mt-3" enctype="multipart/form-data">
             {% load crispy_forms_tags %}
             {% csrf_token %}
-            {{ form|crispy }}
+            <input type="text" {{ form|crispy }}
             <button type="submit" class="btn btn-warning mb-4 rounded-pill"
                 style="background-color:rgb(255, 214, 0); color: black;">
                 <span><span>&#43;</span><b> BUAT POSTINGAN </b></span>
@@ -22,6 +22,10 @@
                     {% for d in data.posting.all %}
                     <div class="card card-primary card-outline">
                         <div class="card-header">
+                            <div  style="text-align: right;">
+                                <a href="#delete-{{d.id}}" data-toggle="modal"
+                                data-target="#delete-{{d.id}}">Hapus</a>
+                            </div>
                             <h5 class="card-title m-0">{{d.owner}}</h5>
                             <h6>{{d.waktu}}</h6>
                         </div>
@@ -29,9 +33,9 @@
                             <p class="card-text">{{d.desc}}</p>
                         </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-danger" data-toggle="modal"
+                                <!-- <button type="submit" class="btn btn-danger" data-toggle="modal"
                                     data-target="#delete-{{d.id}}"><i class="fas fa-trash-alt"></i>
-                                </button>
+                                </button> -->
                             </div>
                         </div>
                     </div>
