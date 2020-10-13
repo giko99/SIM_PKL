@@ -5,19 +5,19 @@ from . import models
 class ForumForm(ModelForm):
     class Meta :
         model = models.Forum
-        exclude=['waktu']
+        exclude=['owner','waktu']
 
 class PostingForm(ModelForm):
     class Meta :
         model = models.Posting
         exclude=['forum','owner','waktu']
 
-class BalasForm(ModelForm):
-    class Meta:
-        model = models.Balas
-        exclude = ['waktu']
-
 class KomenForm(ModelForm):
     class Meta:
         model = models.Komen
-        exclude = ['waktu']
+        exclude = ['posting','pengguna','waktu']
+
+class BalasForm(ModelForm):
+    class Meta:
+        model = models.Balas
+        exclude = ['komen','user','waktu']

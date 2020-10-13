@@ -21,6 +21,23 @@ def index_dosen(req):
         'form' : form_input,
     })
 
+def index_staf(req):
+    tasks = models.Forum.objects.all()
+    form_input = forms.ForumForm()
+
+    if req.POST:
+        form_input = forms.ForumForm(req.POST, req.FILES)
+        if form_input.is_valid():
+            form_input.instance.owner = req.user
+            form_input.save()
+            messages.success(req, 'Data telah ditambahkan.')
+            return redirect('/forums/')
+
+    return render(req, 'forums/index.html',{
+        'data': tasks,
+        'form' : form_input,
+    })
+
 def index_mhs(req):
     tasks = models.Forum.objects.all()
     form_input = forms.ForumForm()
@@ -38,8 +55,13 @@ def index_mhs(req):
         'form' : form_input,
     })
 
-def delete_dosen(req, id):
+def delete_forum(req, id):
     models.Forum.objects.filter(pk=id).delete()
+    messages.success(req, 'data telah di hapus.')
+    return redirect('/forums/')
+
+def delete_komen(req, id):
+    models.Komen.objects.filter(pk=id).delete()
     messages.success(req, 'data telah di hapus.')
     return redirect('/forums/')
 
@@ -61,19 +83,6 @@ def detail_forum(req, id):
             form_input.instance.forum = forum
             form_input.save()
         return redirect(f'/forums/{id}')
-    # if req.POST:
-    #     form_komen = forms.PostingForm(req.POST, req.FILES)
-    #     if form_komen.is_valid():
-    #         form_komen.instance.owner = req.user
-    #         form_komen.save()
-    #         return redirect('/forums/detail')
-
-    # if req.POST:
-    #     form_balas = forms.PostingForm(req.POST, req.FILES)
-    #     if form_balas.is_valid():
-    #         form_balas.instance.owner = req.user
-    #         form_balas.save()
-    #         return redirect('/forums/detail')
 
     return render(req, 'forums/detail.html', {
         'form': form_input,

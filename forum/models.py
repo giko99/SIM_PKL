@@ -1,22 +1,24 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
-from mitra.models import Mitra
 
 # Create your models here.
 
 class Forum(models.Model):
-    nama_mitra = models.ForeignKey(Mitra, on_delete = models.DO_NOTHING)
-    mahasiswa = models.ForeignKey(User,on_delete = models.DO_NOTHING,related_name='mahasiswas')
-    waktu = models.DateTimeField(default=datetime.now)
-    desc = models.TextField()
-    # upload_img = models.ImageField(default='', upload_to='images/', null=False, blank=True)
+    owner = models.ForeignKey(User, on_delete = models.DO_NOTHING,related_name='forum')
+    nama_mitra = models.CharField( max_length=255)
+    alamat = models.CharField( max_length=255)
+    deskripsi = models.TextField(default='')
+    pic = models.CharField( max_length=255)
+    telp = models.CharField(max_length=255)
+    def __str__(self):
+        return self.nama_mitra
 
 class Posting(models.Model):
     forum = models.ForeignKey(Forum, on_delete = models.DO_NOTHING,related_name='posting')
     owner = models.ForeignKey(User, on_delete = models.DO_NOTHING,related_name='owner')
     waktu = models.DateTimeField(default=datetime.now)
-    desc = models.TextField()
+    desc = models.CharField(max_length=2000)
 
 class Komen(models.Model):
     posting = models.ForeignKey(Posting, on_delete = models.DO_NOTHING,related_name='komentar')

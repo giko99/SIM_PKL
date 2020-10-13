@@ -32,6 +32,7 @@
               <td>{{d.pic}}</td>
               <td>{{d.telp}}</td>
               <td>
+                <a href="/forums/{{d.id}}" type="submit" class="btn btn-primary">Masuk Grup</a>
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#detail-{{d.id}}" style="background-color:#625f53;">
                   <i class="fas fa-eye"></i></button>
                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#update-{{d.id}}" style="background-color:rgb(255, 214, 0);">
@@ -170,6 +171,7 @@
                       {% load crispy_forms_tags %}
                       {% csrf_token %}
                       {{ form|crispy }}
+                      {{ form_forum|crispy }}
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Input</button>

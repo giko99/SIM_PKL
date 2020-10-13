@@ -1,8 +1,8 @@
-{% extends "base_dosen.html" %}
+{% extends "base_staf.html" %}
 
 {% block content %}
 <div class="container-fluid">
-    <h1 class="mt-4" style="text-align: center;">DATA FORUM</h1>
+    <h1 class="mt-4" style="text-align: center;">FORUM</h1>
     <ol class="breadcrumb mb-4">
     </ol>
     <button type="button" class="btn btn-warning mb-4 rounded-pill" data-toggle="modal" data-target="#input"
@@ -19,8 +19,10 @@
                                 <h5 class="card-title m-0">{{d.nama_mitra}}</h5>
                             </div>
                             <div class="card-body">
-                                <p class="card-text">{{d.waktu}}</p>
-                                <p class="card-text">{{d.desc}}</p>
+                                PIC :<p class="card-text">{{d.pic}}</p>
+                                Alamat :<p class="card-text">{{d.alamat}}</p>
+                                Nomor Telepon :<p class="card-text">{{d.telp}}</p>
+                                Deskripsi :<p class="card-text">{{d.deskripsi}}</p>
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-danger" data-toggle="modal"
                                         data-target="#delete-{{d.id}}"><i class="fas fa-trash-alt"></i>
