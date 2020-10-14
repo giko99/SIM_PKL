@@ -75,25 +75,25 @@
                 <div class="card-body">
                     <div class="card">
                         <div class="container-fluid">
-                        {% for d in data.komen.all %}
-                        <div class="card card-primary card-outline">
-                            <div class="card-header">
-                                <div style="text-align: right;">
-                                    <a href="#delete-{{d.id}}" data-toggle="modal"
-                                        data-target="#delete-{{d.id}}">Hapus</a>
+                            {% for d in data.komen.all %}
+                            <div class="card card-primary card-outline">
+                                <div class="card-header">
+                                    <div style="text-align: right;">
+                                        <a href="#delete-{{d.id}}" data-toggle="modal"
+                                            data-target="#delete-{{d.id}}">Hapus</a>
+                                    </div>
+                                    <h5 class="card-title m-0">{{d.pengguna}}</h5>
+                                    <h6>{{d.waktu}}</h6>
                                 </div>
-                                <h5 class="card-title m-0">{{d.pengguna}}</h5>
-                                <h6>{{d.waktu}}</h6>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">{{d.desc}}</p>
-                            </div>
-                            <div class="card-footer" style="text-align: center;">
-                                <!-- <a href="#komen" data-toggle="modal" data-target="#komen">Komentari</a> -->
+                                <div class="card-body">
+                                    <p class="card-text">{{d.desc}}</p>
+                                </div>
+                                <div class="card-footer" style="text-align: center;">
+                                    <!-- <a href="#komen" data-toggle="modal" data-target="#komen">Komentari</a> -->
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
                     <!-- Modal Delete -->
