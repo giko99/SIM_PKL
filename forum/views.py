@@ -65,11 +65,6 @@ def delete_komen(req, id):
     messages.success(req, 'data telah di hapus.')
     return redirect('/forums/')
 
-def delete_mhs(req, id):
-    models.Forum.objects.filter(pk=id).delete()
-    messages.success(req, 'data telah di hapus.')
-    return redirect('/forum/')
-
 def detail_forum(req, id):
     forum = models.Forum.objects.filter(pk=id).first() 
     form_input = forms.PostingForm()
