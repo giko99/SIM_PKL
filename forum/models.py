@@ -21,7 +21,7 @@ class Posting(models.Model):
     desc = models.CharField(max_length=2000)
 
 class Komen(models.Model):
-    posting = models.ForeignKey(Posting, on_delete = models.DO_NOTHING,related_name='komentar')
+    posting = models.ForeignKey(Posting, on_delete = models.CASCADE,related_name='komentar')
     pengguna = models.ForeignKey(User, on_delete = models.DO_NOTHING,related_name='pengguna')
     waktu = models.DateTimeField(default=datetime.now)
     komentar = models.TextField()

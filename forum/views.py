@@ -145,8 +145,8 @@ def delete_posting_mhs(req, id, id_posting):
     messages.success(req, 'data telah di hapus.')
     return redirect(f'/forum/{id}')
 
-def staf_komen(req, id):
-    posting = models.Posting.objects.filter(pk=id).first() 
+def staf_komen(req, id, id_posting):
+    posting = models.Posting.objects.filter(pk=id_posting).first() 
 
     if req.POST:
         form_komen = forms.KomenForm(req.POST, req.FILES)
