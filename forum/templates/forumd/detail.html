@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_dosen.html" %}
 
 {% block content %}
 <!-- Model Forum -->
@@ -18,8 +18,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card-body">
+                {% for d in data.posting.all %}
                 <div class="card">
-                    {% for d in data.posting.all %}
                     <div class="card card-primary card-outline">
                         <div class="card-header">
                             <div  style="text-align: right;">
@@ -61,7 +61,7 @@
                                     <button class="btn" type="button" data-dismiss="modal" aria-label="Close">
                                         No
                                     </button>
-                                    <a href="/forums/{{data.id}}/posting/{{d.id}}/delete" type="submit"
+                                    <a href="/forumd/{{data.id}}/posting/{{d.id}}/delete" type="submit"
                                         class="btn btn-danger">Yes</a>
                                 </div>
                             </div>

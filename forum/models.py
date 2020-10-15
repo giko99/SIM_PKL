@@ -24,12 +24,12 @@ class Komen(models.Model):
     posting = models.ForeignKey(Posting, on_delete = models.DO_NOTHING,related_name='komentar')
     pengguna = models.ForeignKey(User, on_delete = models.DO_NOTHING,related_name='pengguna')
     waktu = models.DateTimeField(default=datetime.now)
-    desc = models.TextField()
+    komentar = models.TextField()
 
 class Balas(models.Model):
     komen = models.ForeignKey(Komen, on_delete = models.DO_NOTHING,related_name='balasan')
     user = models.ForeignKey(User, on_delete = models.DO_NOTHING,related_name='user')
     waktu = models.DateTimeField(default=datetime.now)
-    desc = models.TextField()
+    balasan = models.TextField()
 
 
