@@ -10,4 +10,5 @@ urlpatterns = [
     path('<id>/detail/delete/', views.delete_posting_mhs),
     path('<id>/posting/<id_posting>/delete/', views.delete_posting_mhs),
 
+    path('<id>/posting/<id_posting>/komen', views.mhs_komen),
 ]

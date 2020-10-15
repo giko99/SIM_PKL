@@ -25,48 +25,24 @@
                             <div style="text-align: right;">
                                 <a href="#delete-{{d.id}}" data-toggle="modal" data-target="#delete-{{d.id}}">Hapus</a>
                             </div>
-                            <h5 class="card-title m-0">{{d.owner}}</h5>
-                            <h6>{{d.waktu}}</h6>
-                        </div>
-                        <div class="card-body">
+                            <h5 class="card-title m-0">{{d.owner}} - {{d.waktu}}</h5>
                             <p class="card-text">{{d.desc}}</p>
                         </div>
-                        <div class="card-footer" style="text-align: center;">
+                        <div class="card-body" style="text-align: center;">
                             <a href="#komen" data-toggle="modal" data-target="#komen">Komentari</a>
-                            <!-- <button type="submit" class="btn btn-danger" data-toggle="modal"
-                                    data-target="#delete-{{d.id}}"><i class="fas fa-trash-alt"></i>
-                                </button> -->
                         </div>
-
-                        <!-- Komen -->
-                        <div class="col-sm-12">
+                        <div class="container-fluid">
+                            {% for k in d.komentar.all %}
                             <div class="card-body">
-                                <div class="card">
-                                    <div class="container-fluid">
-                                        {% for k in d.komentar.all %}
-                                        <div class="card card-primary card-outline">
-                                            <div class="card-body">
-                                                <div style="text-align: right;">
-                                                    <a href="#delete-{{d.id}}" data-toggle="modal"
-                                                        data-target="#delete-{{d.id}}">Hapus</a>
-                                                </div>
-                                                <h5 class="card-title m-0">{{k.pengguna}}</h5>
-                                                <h6>{{k.waktu}}</h6>
-                                            </div>
-                                            <p class="card-text">{{k.komentar}}</p>
-                                            <div class="card-footer" style="text-align: center;">
-                                                <!-- <a href="#komen" data-toggle="modal" data-target="#komen">Komentari</a> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {% endfor %}
+                                <h6 class="card-title m-0">{{k.pengguna}} - {{k.waktu}}</h6>
+                                <p class="card-text">{{k.komentar}}</p>
                             </div>
+                            {% endfor %}
+                        </div>
+                        <div class="card-footer">
                         </div>
                     </div>
                 </div>
-
 
                 <!-- Modal Delete -->
                 <div class="modal fade" id="delete-{{d.id}}" tabindex="-1" role="dialog"
@@ -114,42 +90,11 @@
                         </div>
                     </div>
                 </div>
-
                 {% endfor %}
-            </div>
 
+            </div>
         </div>
     </div>
 </div>
-{% endblock %}
 
-<!-- Modal Balas -->
-<!-- <div class="container">
-    <h1 class="mt-4" style="text-align: center;">balas</h1>
-    <button type="button" class="btn btn-warning mb-4 rounded-pill" data-toggle="modal" data-target="#"
-        style="background-color:rgb(255, 214, 0); color: black;">
-        <span><span>&#43;</span><b> BUAT POSTINGAN </b></span>
-    </button>
-    <div class="form-group">
-        <textarea class="form-control" rows="5" id="comment"></textarea>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card-body">
-                <div class="card" style="width: ">
-                    {% for e in balas %}
-                    <div class="card card-primary card-outline">
-                        <div class="card-header">
-                            <h5 class="card-title m-0">{{e.user}}</h5>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">{{e.waktu}}</p>
-                            <p class="card-text">{{e.desc}}</p>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
+{% endblock %}

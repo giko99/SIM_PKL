@@ -156,7 +156,27 @@ def staf_komen(req, id, id_posting):
             form_komen.save()
 
     return redirect(f'/forums/{id}')
+
+def dosen_komen(req, id, id_posting):
+    posting = models.Posting.objects.filter(pk=id_posting).first() 
+
+    if req.POST:
+        form_komen = forms.KomenForm(req.POST, req.FILES)
+        if form_komen.is_valid():
+            form_komen.instance.pengguna = req.user
+            form_komen.instance.posting = posting
+            form_komen.save()
+
+    return redirect(f'/forumd/{id}')
     
+def mhs_komen(req, id, id_posting):
+    posting = models.Posting.objects.filter(pk=id_posting).first() 
 
+    if req.POST:
+        form_komen = forms.KomenForm(req.POST, req.FILES)
+        if form_komen.is_valid():
+            form_komen.instance.pengguna = req.user
+            form_komen.instance.posting = posting
+            form_komen.save()
 
-
+    return redirect(f'/forum/{id}')
